@@ -2,27 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projects</title>
-    <link rel="stylesheet" type="text/css" href="css/index-mobile.css"></link>
-    <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+    <link rel="stylesheet" type="text/css" href="index.css"></link>
 </head>
-
 <body>
-    <div id="content">
-        <div id="nav" class="white-background">
-            <h1 id="nav-header" class="teal-background">Navigation</h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Project Highlights</a></li>
-                <li><a href="https://github.com/ajackson2681">GitHub Page</a></li>
-            </ul>
-        </div>
+    <header>
+        <h1>Adam Jackson</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="https://bitbucket.org/ajackson2681">BitBucket</a>
+        </nav>
+    </header>
 
-        <div id="panel" class="white-background">
-            <div id="innerPanel">
-                <h1>Projects</h1>
+    <main>
+        <article>
+            <h1>Projects</h1>
+            <article>
                 <h3>Jackson Flooring Inventory Manager</h3>
                 <img id="jfim" src="images/jfim.jpg" alt="jfim in action">
                 <p>
@@ -32,8 +30,10 @@
                     behind this project was that most other inventory systems are too expensive and had many features that the 
                     retailer would not utilize. The entire program is written in Java, using the JavaFX UI library. 
                 </p>
-                <a href="https://github.com/ajackson2681/Jackson-Flooring-Inventory-Manager">GitHub Repo</a>
+                <a href="https://bitbucket.org/ajackson2681/jackson-flooring-inventory-manager/src/master/">BitBucket Repo</a>
+            </article>
 
+            <article>
                 <h3>MTG Card Fetcher for Discord</h3>
                 <img id="cardfetcher" src="images/cardfetcher.jpg" alt="card fetcher bot in action">
                 <p>
@@ -51,10 +51,9 @@
                     for interfacing with Scryfall.com. I no longer am putting any work into the Java bot, and as such, any glaring bugs that
                     exist will likely never be addressed. For those interested, the bot can be found <a href="https://github.com/ajackson2681/Card-Fetcher">here</a>.
                 </p>
-                <a href="https://github.com/ajackson2681/CardFetcher-ts">GitHub Repo</a>
-            </div>
-        </div>
-    </div>
-
-    <script src="formatter.js"></script>
+                <a href="https://bitbucket.org/ajackson2681/cardfetcher-ts/src/master/">BitBucket Repo</a>
+            </article>
+        </article>
+    </main>
 </body>
+</html>

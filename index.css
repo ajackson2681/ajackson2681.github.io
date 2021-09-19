@@ -71,6 +71,20 @@ article > img {
     width: 100%;
 }
 
+#timer {
+    width: 50%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
 @media (orientation: portrait) {
     main > article {
         width: 22.5em;

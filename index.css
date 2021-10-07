@@ -75,6 +75,10 @@ article > img {
     width: 50%;
 }
 
+#snake {
+    margin-top: 1%;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;

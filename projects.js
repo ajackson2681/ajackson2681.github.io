@@ -5,6 +5,6 @@ window.onload = () => {
         .then( (data) => {
             const version = data.values.filter( (value) => value.key === "LATEST_VERSION")[0]?.value;
             const versionNode = document.getElementById("version");
-            versionNode.innerText = `(v${version})`
+            versionNode.innerText += ` (v${version})`;
         });
 }

@@ -16,14 +16,13 @@ body {
     margin: 0;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #333333;
 }
 
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background-color: teal;
     padding-bottom: 2em;
 }
 
@@ -40,10 +39,14 @@ header nav {
 
 a, a:visited {
     text-decoration: none;
-    color: lime;
+    color: orange;
 }
 
 a:hover {
+    color: teal;
+}
+
+header a:hover {
     color: white;
 }
 
@@ -55,8 +58,7 @@ main {
 }
 
 main h1 {
-    border-bottom: 1pt solid white;
-    color: white;
+    border-bottom: 1pt solid black;
 }
 
 main > * {
@@ -67,14 +69,6 @@ main > * {
 
 article img {
     width: 100%;
-}
-
-article h3 {
-    color: white;
-}
-
-article p {
-    color: white;
 }
 
 /* #timer {

@@ -12,53 +12,73 @@
     width: device-width;
 }
 
+@media (prefers-color-scheme: light) {
+    header {
+        border-bottom: 1px solid black;
+    }
+
+    a, a:visited {
+        color: blue;
+    }
+    
+    a:hover {
+        color: #5f5ffa;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color:white;
+    }
+    header {
+        border-bottom: 1px solid white;
+    }
+
+    a, a:visited {
+        color: darkred;
+    }
+
+    a:hover {
+        color: rgb(139, 50, 50);
+    }
+
+}
+
 body {
     margin: 0;
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: teal;
-    padding-bottom: 2em;
 }
 
 header h1 {
     font-size: 3em;
-    color: white;
+    margin: 20px 0px 20px 0px;
+    font-weight: normal;
 }
 
 header nav {
     display: flex;
     justify-content: space-between;    
     width: 15em;
+    margin-bottom: 0.5%;
 }
 
-a, a:visited {
-    text-decoration: none;
-    color: orange;
-}
-
-a:hover {
-    color: teal;
-}
-
-header a:hover {
-    color: white;
-}
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-}
-
-main h1 {
-    border-bottom: 1pt solid black;
 }
 
 main > * {
@@ -71,9 +91,15 @@ article img {
     width: 100%;
 }
 
-/* #timer {
-    width: 50%;
-} */
+article h1 {
+    font-weight: normal;
+    font-size: 1.75em;
+}
+
+article h3 {
+    font-weight: normal;
+    font-size: 1.25em;
+}
 
 #snake {
     margin-top: 1%;
@@ -84,19 +110,24 @@ article img {
     flex-direction: row;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
 }
 
 @media (orientation: portrait) {
-    main > article {
+    main > article, header {
         width: 22.5em;
     }
 }
 
 @media (orientation: landscape) {
-    main > article {
+    main > article, header {
         width: 50em;
     }
 }

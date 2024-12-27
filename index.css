@@ -43,6 +43,9 @@
         color: rgb(139, 50, 50);
     }
 
+    canvas {
+        border: 1px solid white;
+    }
 }
 
 body {

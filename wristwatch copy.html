@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Segment Wristwatch</title>
+    <link rel="stylesheet" type="text/css" href="index.css?version=2"></link>
+
+</head>
+<body>
+    <main>
+        <h1 class="no-bottom-margin">The 7-Segment Wristwatch</h1>
+        <fieldset class="no-top-margin">
+            <legend>History</legend>
+            <p>
+                This started from an inspiration from the Nixie Watch by Cathode 
+                Corner. I loved the design, but I didn't love the price. I also
+                wanted to learn more about embedded development, so this seemed
+                like a perfect project to take on. This project was actually my 
+                first attempt at building something from the ground up. I had done 
+                some tinkering with Arudinos in the past, and I had some experience 
+                with embedded development from my job, but I had never done 
+                PCB design, schematic capture, or mechanical design.
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Design Choices</legend>
+            <p>
+                I went with the ATMega328 microcontroller for a few reasons:
+                <ul>
+                    <li>It's very easy to work with, and there is a lot of community support available.</li>
+                    <li>I had experience with Arudinos from tinkering and my job.</li>
+                    <li>The ATMega328PB model had some very low power modes that made it appealing.</li>
+                    <li>I already had an external programmer for AVR microcontrollers.</li>
+                    <li>They're not too expensive, just a few dollars each</li>
+                </ul>
+            </p>
+
+            <p>
+                For the display, I went with a 7-segment display instead of nixie
+                tubes primarilly for cost reasons. Nixie tubes are no longer made
+                and existing ones are quite expensive. Plus 7-segment displays still
+                look super cool. They also have the added benefit of being able to
+                be driven at voltages that the microcontroller more directly works
+                with.
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Design Process</legend>
+            <p>
+                I went through quite a few iterations with this project, with it
+                being my first time doing PCB design and mechanical design. I actually
+                started by using TinkerCad's circuit design tools to prototype
+                driving the LEDs. I also ended up using TinkerCad throughout the
+                process to test out different configurations of the LEDs and logic and
+                whatnot.
+            </p>
+
+            <hr>
+
+            <h2>Rev(-1)</h2>
+            <p>
+                This design was entirely digital using TinkerCad. It was mostly to
+                validate that I could drive the 7-segment display with the microcontroller
+                and to get a feel for how the logic should work. It also helped me
+                figure out how to show/hide the display when the watch wasn't being
+                looked at. It also let me test out using a shift register to drive
+                the LEDs with fewer pins.
+            </p>
+
+            <hr>
+
+            <h2>Rev0</h2>
+            <a href="images/wristwatch_rev0.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="wristwatch_rev0" src="images/wristwatch_rev0.jpg" alt="rev0 design">
+            </a>
+            <p>
+                This was my first real PCB design. It used entirely through-hole
+                components. I cannot stress enough that this design was <i>terrible.</i>
+                It did not use an IMU, but rather two tilt sensors (the idea here being
+                one would be used to detect if arm was raised, and another to detect
+                if your arm was turned towards your face). It did not include
+                a Real-Time Clock (RTC) module, and it used the microcontroller's
+                internal clock, which was very inaccurate. It also did not use the
+                correct footprints for the components I selected, which made assembly
+                super annoying. To compound the issues further, I accidentally
+                separated the ground plane into two separate planes, which meant 
+                it didn't work until I bridged them together. 
+            </p>
+
+            <a href="images/rev0_bridge.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="rev0_bridge" src="images/rev0_bridge.jpg" alt="rev0 with ground plane bridged">
+            </a>
+
+            <p>
+                Some other mistakes I made with this design were that I tried to
+                drive the two 7-segment displays with a single shift register and
+                multiplexing. This <i>worked</i>, but the LEDs were very dim as
+                a result. I also made the mistake of assuming that the 7-segment
+                display only needed a single resistor for the common cathode, when
+                in reality, each segment needed its own resistor.
+            </p>
+
+            <p>
+                So yeah, to summarize, this design was a mess. It <i>technically</i>
+                worked, but it was very inaccurate, and looked like crap.
+            </p>
+
+            <hr>
+
+            <h2>Rev1</h2>
+            <a href="images/wristwatch_rev1_no_strap.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="wristwatch_rev1" src="images/wristwatch_rev1_no_strap.jpg" alt="rev1 design">
+            </a>
+            <p>
+                This design was <i>much</i> better. I added an RTC chip for accurate
+                timekeeping, and I added a second shift register so that each digit
+                was driven independently without multiplexing. I removed one of the
+                tilt sensors, as it turned out the sensor for detecting if the arm
+                was raised was both unreliable, and also not super necessary. I 
+                also switched to using surface mount components for all the passives.
+                This made the board look much cleaner, and it was easier for me to
+                determine which footprints were the actually correct ones.
+            </p>
+            
+            <p>
+                This design ended up working actually pretty well. The timekeeping
+                was accurate, the LEDs had consistent brightness across all their
+                segments, and the watch more-or-less correctly detected when it 
+                was being looked at. 
+            </p>
+
+            <p>
+                The enclosure for this design wasn't particularly great, but it was
+                functional. It was basically a tray with no top, and the PCB just
+                screwed down to the bottom of the tray. It was held onto your wrist
+                using a standard NATO-style wrist strap. Because there was no top,
+                the face was just the exposed PCB, which actually looked pretty cool,
+                but it also meant the watch was not very durable, and it was easy to
+                accidentally lose the battery (I did this multiple times).
+            </p>
+            <a class="flex-center" href="images/wristwatch_rev1.jpg" target="_blank" rel="noopener noreferrer">
+                <img class="small-img" id="wristwatch_rev1" src="images/wristwatch_rev1.jpg" alt="rev1 design">
+            </a>
+            <hr>
+            
+            <h2>Rev2</h2>
+            <a class="flex-center" href="images/wristwatch_rev2.jpg" target="_blank" rel="noopener noreferrer">
+                <img class="small-img" id="wristwatch_rev2" src="images/wristwatch_rev2.jpg" alt="rev2 design">
+            </a>
+            <p>
+                Rev2 was designed as a strict improvement over Rev1. The main change
+                I made here was replacing the tilt sensor with an IMU. The tilt sensor
+                worked pretty well, but it rattled and was annoying to listen to. I
+                also shifted to using an SMD package for the microcontroller,
+                as well as using less bulky battery contacts. This board again
+                had all the passives pre-assembled by the fabricator, but I still 
+                need to assemble the battery contacts, buttons, LEDs, microcontroller,
+                and RTC myself.
+            </p>
+
+            <p>
+                A big mistake I made with this design was that I did not put a programming
+                header on the board. I <i>did</i> include pads, but they required 
+                soldering wires to them in order to program the board, which was a 
+                huge pain. I didn't include an actual header on the board because 
+                my monkey brain told me that it <i>had</i> to be the same as the
+                ICSP header on the Arudino Uno, which was way too bulky to include.
+            </p>
+
+            <p>
+                The first enclosure for this design was more or less the same as the
+                Rev1, where it was a a tray with no top. However, because this PCB
+                was physically smaller, and the battery contacts were also smaller,
+                I was able to design a shell that had a top. This made the watch
+                look more like an actual watch, and also made it much harder to
+                lose the battery. However, the lid was only held on with friction, 
+                so it was still possible to accidentally pop it off and lose the battery.
+                Although, the contacts held on much tighter, so this was signifcantly
+                less likely to happen. It still used a NATO-style wrist strap.
+            </p>
+            <hr>
+
+            <h2>Rev3</h2>
+            <a class="flex-center" href="images/wristwatch_rev3.jpg" target="_blank" rel="noopener noreferrer">
+                <img class="small-img" id="wristwatch_rev3" src="images/wristwatch_rev3.jpg" alt="rev3 design">
+            </a>
+            <p>
+                This is the current design, and is <i>mostly</i> just a visual
+                improvement over Rev2, with the same functionality. The biggest
+                change I made was moving all SMD components to a single side of 
+                the board, which made it so all of them (including the microcontroller
+                and RTC) could be pre-assembled by the fabricator for the same
+                assembly cost as the Rev2. The PCB itself was changed to be
+                circular rather than rectangular, which actually ended up shrinking
+                the footprint by a little bit. I also got over my monkey brain and
+                realized that the header form factor didn't matter as long as the
+                pins were routed correctly, so I added a small JST header for 
+                programming, which is a huge quality of life improvement over having
+                to solder wires to pads every time I wanted to program the board.
+            </p>
+            <p>
+                The only other noteworthy change I made was adding a test point
+                so I can attach a multimeter in line and measure the current draw.
+                If I didn't want to measure the current draw, I could just bridge
+                it with a 0 ohm resistor. This was mainly added for my own curiosity, 
+                but it could also be useful for optimizing power consumption in the 
+                future.
+            </p>
+            <p>
+                The initial enclosure for this design built off the same concept as the
+                final design for the Rev2, where it was a tray with a friction-fit
+                lid, but it was circular, rather than rectuangular. That design 
+                lasted all of about a day before I got fed up with it. The final
+                design used a screw-on lid, which made it much more secure, and
+                pretty much guaranteed that you wouldn't lose the battery. Like
+                the other 2 designs, it used a NATO-style wrist strap.
+            </p>
+        </fieldset>
+    </main>
+    
+    <script src="shared.js"></script>
+    <script src="theme.js"></script>    
+</body>
+</html>

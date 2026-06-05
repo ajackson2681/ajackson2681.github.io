@@ -8,106 +8,98 @@
     <link rel="stylesheet" type="text/css" href="index.css?version=2"></link>
 </head>
 <body>
-    <header>
-        <h1>Adam Jackson</h1>
-        <nav>
-            <a href="index.html">About Me</a>
-            <a href="projects.html">Projects</a>
-            <a href="https://bitbucket.org/ajackson2681">BitBucket</a>
-        </nav>
-    </header>
-
     <main>
-        <article>
-            <h1>Projects</h1>
-            <article>
-                <h3>Dungeon Master Tools</h3>
-                <a href="images/dmtools2.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="dmtools" src="images/dmtools2.jpg" alt="dmtools in action">
-                </a>
-                <p>
-                    This is an application written in Java, with the JavaFX framework. It is a tool that is meant to help 
-                    dungeon masters run a game of Dungeons & Dragons (or other D20-baesd game) more easily. It has a monster 
-                    lookup that interfaces with an sqlite database (that you can create yourself from scratch, following the
-                    provided schema, or utilize the provided one that only contains information from the SRD). It also has 
-                    a dice roller, an encounter builder that you can build from scratch using the monster database or by 
-                    manual input, and then you can save/load these encounters later, and a notes section. It also saves your 
-                    data between uses, so that you don't have to re-enter information.
-                </p>
+        <fieldset>
+            <legend>Codex Text Editor</legend>
+            <a href="images/codex/in_progress.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="codex_in_progress" src="images/codex/in_progress.jpg" alt="in progress design">
+            </a>
+            <p>
+                The Codex text editor is an attempt at a distraction-free writing device, built around a Raspberry Pi Pico for a relatively affordable price-point. It is inspired by the AlphaSmart Neo, a similar device that was popular in the early 2000s. The Codex is open source, and you can follow along with the progress the <a href="codex.html">dedicated page</a>.
+            </p>
+            <p>
+                The idea behind this project was to create an affordable(ish) writing device. The primary contenders in this area are the FreeWriteand the BYOK. The FreeWrite is a great device, but is quite expensiveat around $500. Furthermore, there are those who don't like the E-ink display, which can be slow to refresh. The BYOK is a much more affordable option, but is closed source. The Codex is an attempt to create an affordable, open source alternative to these devices.
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>7-Segment Wristwatch</legend>
+            <a href="images/wristwatch/rev3.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="wristwatch_rev3" src="images/wristwatch/rev3.jpg" alt="rev3 design">
+            </a>
+            <p>
+                This project began because I was a big fan of the <a href="https://scopeclock.com/products/round-nixie-watch">Nixie Watch</a> by Cathode Corner. However, I couldn't justify the $500 price tag, so I decided to do the next best thing: build my own.
+            </p>
+            <p>
+                The watch is built around an ATMega328 microcontroller, and it uses a 7-segment display to show the time. It is powered with a CR2 battery  (like the Nixie Watch), and uses an IMU to detect when the watch is  being looked at. For more information about the design decisions, build process, and build history, check out the dedicated project page linked below.
+            </p>
+            <a href="wristwatch.html">Learn more</a>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dungeon Master Tools</legend>
+            <a href="images/dmtools2.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="dmtools" src="images/dmtools2.jpg" alt="dmtools in action">
+            </a>
+            <p>
+                This is an application written in Java, with the JavaFX framework. It is a tool that is meant to help 
+                dungeon masters run a game of Dungeons & Dragons (or other D20-baesd game) more easily. It has a monster lookup that interfaces with an sqlite database (that you can create yourself from scratch, following theprovided schema, or utilize the provided one that only contains information from the SRD). It also has a dice roller, an encounter builder that you can build from scratch using the monster database or by manual input, and then you can save/load these encounters later, and a notes section. It also saves your data between uses, so that you don't have to re-enter information.
+            </p>
+            
+            <div class="display-block-links">
                 <a href="https://bitbucket.org/ajackson2681/dmtools/src/master/">BitBucket Repo</a>
-                <br>
                 <a href="https://bitbucket.org/ajackson2681/downloads/dmtools-latest.zip" id="version">Download the latest version here!</a>
-            </article>
+            </div>
+        </fieldset>
 
-            <article>
-                <h3>MTG Card Fetcher for Discord</h3>
-                <a href="images/cardfetcher.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="cardfetcher" src="images/cardfetcher.jpg" alt="card fetcher bot in action">
-                </a>
-                <p>
-                    This was a personal project that was mostly just for fun and to play around with the Discord API. My friends and
-                    I have a personal Discord chat channel for our Magic: The Gathering group. The bot works by interfacing with the
-                    Scryfall.com web API to retrieve card information for Magic: The Gathering, and return that information in the
-                    form of an image in the chat, and a link that contains either the EDHREC (for the Commander game variant), or from
-                    Gatherer (which is the official Wizards of the Coast website). It also has additional features that are relevant
-                    only to our group, and thus will not be found on the GitHub repo. This bot is written in TypeScript and runs via
-                    Node.js.
-                    <br><br>
-                    An old version of the bot was written in Java utilizing the <a href="https://github.com/DV8FromTheWorld/JDA">Java Discord API</a>.
-                    One disadvantage to this method was that Java does not handle REST APIs as nicely as JavaScript/TypeScript does. So
-                    due to my lack of experience with REST APIs, I relied on a <a href="https://github.com/ForOhForError/ScryfallAPIBinding">third-party one</a> 
-                    for interfacing with Scryfall.com. I no longer am putting any work into the Java bot, and as such, any glaring bugs that
-                    exist will likely never be addressed. For those interested, the bot can be found <a href="https://bitbucket.org/ajackson2681/Card-Fetcher">here</a>.
-                </p>
-                <a href="https://bitbucket.org/ajackson2681/cardfetcher-ts/src/master/">BitBucket Repo</a>
-            </article>
+        <fieldset>
+            <legend>MTG Card Fetcher for Discord</legend>
+            <a href="images/cardfetcher.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="cardfetcher" src="images/cardfetcher.jpg" alt="card fetcher bot in action">
+            </a>
+            <p>
+                This was a personal project that was mostly just for fun and to play around with the Discord API. My friends and I have a personal Discord chat channel for our Magic: The Gathering group. The bot works by interfacing with the Scryfall.com web API to retrieve card information for Magic: The Gathering, and return that information in the form of an image in the chat, and a link that contains either the EDHREC (for the Commander game variant), or from Gatherer (which is the official Wizards of the Coast website). It also has additional features that are relevant only to our group, and thus will not be found on the GitHub repo. This bot is written in TypeScript and runs via Node.js.
+            </p>
+            <div>
+                An old version of the bot was written in Java utilizing the <a href="https://github.com/DV8FromTheWorld/JDA">Java Discord API</a>. One disadvantage to this method was that Java does not handle REST APIs as nicely as JavaScript/TypeScript does. So due to my lack of experience with REST APIs, I relied on a <a href="https://github.com/ForOhForError/ScryfallAPIBinding">third-party one</a> for interfacing with Scryfall.com. I no longer am putting any work into the Java bot, and as such, any glaring bugs that exist will likely never be addressed. For those interested, the bot can be found <a href="https://bitbucket.org/ajackson2681/Card-Fetcher">here</a>.
+            </div>
+            <a href="https://bitbucket.org/ajackson2681/cardfetcher-ts/src/master/">BitBucket Repo</a>
+        </fieldset>
 
-            <article>
-                <h3>Electron Speedrun Timer</h3>
-                <a href="images/timer-reset.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="timer" src="images/timer-reset.jpg" alt="electron timer for speedruns">
-                </a>
-                <a href="images/timer-running.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="timer" src="images/timer-running.jpg" alt="electron timer for speedruns">
-                </a>
-                <a href="images/timer-paused.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="timer" src="images/timer-paused.jpg" alt="electron timer for speedruns">
-                </a>
-                <p>
-                    This project was conceived when I was attempting to learn how to speedrun Minecraft while playing on Linux. Unfortunately,
-                    there didn't seem to be any good speedrun timers on Linux. This is just a simple timer that can be started, paused, and
-                    re-started. Furthermore, the style can be customized, including font, font color during each of the states, and background
-                    for chroma-keying in recording software such as OBS. All the styling options are outlined on the BitBucket README page. 
-                    Although Electron is a cross-playform UI framework, this application only has pre-built images and installers for the Linux 
-                    operating system (as of writing this). This was due to some difficulties with getting electron-builder-windows working on 
-                    Linux (and thus, BitBucket pipelines). The application runs just fine on Windows, but will need to be built from source.
-                    This project also has an example of utilizing bitbucket pipelines to automate the build process and post the results to the
-                    downloads page of the repository.
-                </p>
-                <a href="https://bitbucket.org/ajackson2681/electron-timer/src/master/">BitBucket Repo</a>
-            </article>
+        <fieldset>
+            <legend>Electron Speedrun Timer</legend>
+            <a href="images/timer-reset.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="timer" src="images/timer-reset.jpg" alt="electron timer for speedruns">
+            </a>
+            <a href="images/timer-running.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="timer" src="images/timer-running.jpg" alt="electron timer for speedruns">
+            </a>
+            <a href="images/timer-paused.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="timer" src="images/timer-paused.jpg" alt="electron timer for speedruns">
+            </a>
+            <p>
+                This project was conceived when I was attempting to learn how to speedrun Minecraft while playing on Linux. Unfortunately, there didn't seem to be any good speedrun timers on Linux. This is just a simple timer that can be started, paused, and re-started. Furthermore, the style can be customized, including font, font color during each of the states, and background for chroma-keying in recording software such as OBS. All the styling options are outlined on the BitBucket README page. Although Electron is a cross-playform UI framework, this application only has pre-built images and installers for the Linux operating system (as of writing this). This was due to some difficulties with getting electron-builder-windows working on Linux (and thus, BitBucket pipelines). The application runs just fine on Windows, but will need to be built from source. This project also has an example of utilizing bitbucket pipelines to automate the build process and post the results to the downloads page of the repository.
+            </p>
+            <a href="https://bitbucket.org/ajackson2681/electron-timer/src/master/">BitBucket Repo</a>
+        </fieldset>
 
-            <article>
-                <h3>Browser Snake</h3>
-                <a href="images/snake.jpg" target="_blank" rel="noopener noreferrer">
-                    <img id="snake" src="images/snake.jpg" alt="snake game in browser">
-                </a>
-                <p>
-                    For this one I just got bored one night and wanted to try and make a game in the browser. I had worked with HTML canvases a
-                    little bit in school, but never did any personal projects using them. This is just a simple implementation of the game snake.
-                    Since it's just a single script file, I'll have the source embedded on this page rather than linking to a repository.
-                </p>
+
+        <fieldset>
+            <legend>Browser Snake</legend>
+            <a href="images/snake.jpg" target="_blank" rel="noopener noreferrer">
+                <img id="snake" src="images/snake.jpg" alt="snake game in browser">
+            </a>
+            <p>
+                For this one I just got bored one night and wanted to try and make a game in the browser. I had worked with HTML canvases a little bit in school, but never did any personal projects using them. This is just a simple implementation of the game snake. Since it's just a single script file, I'll have the source embedded on this page rather than linking to a repository.
+            </p>
+            <div class="display-block-links">
                 <a href="snake.js">Source</a>
-                <br>
                 <a href="snake.html">Play it!</a>
-            </article>
-        </article>
-    
-        <footer>
-            <a onclick="setColor()" href="">Switch Theme</a>
-        </footer>
-    
-        <script src="projects.js"></script>    
+            </div>
+        </fieldset>
     </main>
+    
+    <script src="shared.js"></script>
+    <script src="theme.js"></script>    
 </body>
 </html>

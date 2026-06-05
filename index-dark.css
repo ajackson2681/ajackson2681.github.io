@@ -20,7 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Georgia', serif;
 }
 
 canvas {
@@ -51,10 +51,9 @@ header h1 {
 header nav {
     display: flex;
     justify-content: space-between;    
-    width: 15em;
-    margin-bottom: 0.5%;
+    width: 20em;
+    margin-bottom: 2%;
 }
-
 
 main {
     display: flex;
@@ -69,22 +68,35 @@ main > * {
     padding-bottom: 1%;
 }
 
-article img {
+article img, fieldset img {
     width: 100%;
 }
 
-article h1 {
+article h1, fieldset legend {
     font-weight: normal;
     font-size: 1.75em;
 }
 
-article h3 {
+article h3, fieldset legend {
     font-weight: normal;
     font-size: 1.25em;
 }
 
+fieldset {
+    margin-top: 5%;
+}
+
+footer {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
 #snake {
     margin-top: 1%;
+}
+
+.display-block-links > a {
+    display: block;
 }
 
 .flex-row {
@@ -102,14 +114,30 @@ article h3 {
     justify-content: center;
 }
 
+.no-top-margin {
+    margin-top: 0;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0;
+}
+
+.whole-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
 @media (orientation: portrait) {
-    main > article, header {
+    main > article, main > fieldset, header {
         width: 22.5em;
     }
 }
 
 @media (orientation: landscape) {
-    main > article, header {
+    main > article, main > fieldset, header {
         width: 50em;
     }
 }

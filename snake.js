@@ -421,11 +421,11 @@ function attachControls() {
     }
 }
 
-window.onload = () => {
+window.addEventListener('load', () => {
     canvas = document.getElementById("snake");
     ctx = canvas.getContext("2d");
     canvas.height = blockWidth*board.length;
     canvas.width = blockWidth*board[0].length + 200;
     attachControls();
     window.requestAnimationFrame(animationLoop);
-}
+});

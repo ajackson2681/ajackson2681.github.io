@@ -6,64 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
     <link rel="stylesheet" type="text/css" href="index.css?version=2"></link>
-
 </head>
 <body>
-    <header>
-        <h1>Adam Jackson</h1>
-        <nav>
-            <a href="index.html">About Me</a>
-            <a href="projects.html">Projects</a>
-            <a href="https://bitbucket.org/ajackson2681">BitBucket</a>
-        </nav>
-    </header>
-
     <main>
-        <article>
-            <h1>About Me</h1>
-            <article>
-                <p>
-                    I grew up in Poynette, Wisconsin, a very small town of about 2,500 people located just North of Madison on Highway 51. I attended 
-                    all 12 years of my primary education at the Poynette School District and graduated in 2015. There is almost nothing noteworthy
-                    from the town, other than the MacKenzie center.
-                </p>
-                <p>
-                    I graduated High School from the Poynette School district in 2015, and it's where I learned of my love for Computer Science. 
-                    For the first 3 years of college, I attended Madison College (also known as MATC) for their transfer program, and completed
-                    most of my general education requirements. I finished up my time at Madison College in the spring of 2018. From fall 2018 
-                    until December 2020, I attended the University of Wisconsin -- Madison for Computer Science, with a minor in Mathematics.
-                </p>
-                <p>
-                    I am currently an embedded software engineer for Sound Devices, LLC, working on their Astral transmitters and receivers. My 
-                    primary expertise is in embedded systems development and peripheral device integration. I have a strong foundation in C and 
-                    C++, but am also quite comfortable with Python, JavaScript/TypeScript, and Java. I work almost exclusively in the Linux 
-                    Operating System, so I also have extensive experience writing shell scripts.
-                </p>
-                <p>
-                    Previously, I worked at Genus PLC as a senior software engineer in their biosystems engineering department, developing their
-                    bovine sexing instrumentation.
-                </p>
-                <p>
-                    My primary area of interest is in embedded systems; I love working on devices that interact with the physical world. But 
-                    I love pretty much all aspects of software development. Throughout my professional career, I've done a little bit of 
-                    everything in the software development lifecycle.
-                </p>
-            </article>
+        <fieldset>
+            <legend>About Me</legend>
+            <p>
+                I grew up in Poynette, Wisconsin, a small town of about 2500 people just North of Madison on Highway 51. I attended the Poynette School District for all twelve years of my primary education, graduating in 2015.
+            </p>
+            <p>
+                It was in high school that I first discovered my love for Computer Science. After graduating, I spent three years at Madison College (MATC) completing general education requirements through their transfer program, finishing up in spring 2018. I then transferred to the University of Wisconsin — Madison, where I earned a degree in Computer Science with a minor in Mathematics, graduating in December 2020.
+            </p>
+            <p>
+                I'm currently an embedded software engineer at Sound Devices, LLC, working on their Astral receivers and transmitters. My primary expertise is in embedded systems development and peripheral device integration. I have a strong foundation in C and C++, but I'm also comfortable with Python, JavaScript/TypeScript, and Java. I work almost exclusively in Linux, so shell scripting has become second nature as well.
+            </p>
+            <p>
+                Prior to my current role, I worked at Genus PLC as a senior software engineer in their biosystems engineering department, developing bovine sexing instrumentation. The role was unusually broad; I started building Angular and Node.js applications for the instrument's GUI and backend server, and gradually took on more of the embedded side over time, eventually owning all microcontroller-based firmware alongside SOM and peripheral integration, Python and Bash scripting, and occasional DevOps work.
+            </p>
+            <p>
+                On the embedded side, I led a firmware refactor to modernize the codebase and decouple it from its original IDE. When the team began work on a new instrument, I designed the embedded architecture from the ground up: project structure, thread delegation, a peripheral abstraction model for hardware/virtual component swapping, and a messaging protocol between the software and SOM. I documented the architecture in full and wrote the team's coding style guide.
+            </p>
+            <p>
+                Embedded systems are where my heart is, I love building software that interacts with the physical world. That said, I genuinely enjoy all facets of software development, and over the course of my career I've had the chance to touch pretty much every part of the development lifecycle.
+            </p>
+            <p>
+                Outside of work, I'm usually elbow-deep in some side project, whether that's designing a PCB, modeling an enclosure, or writing firmware for something I probably didn't need to build from scratch. Currently, that's the Codex: a distraction-free writing device  built around a Raspberry Pi Pico, inspired by the AlphaSmart Neo. It's open source, and you can follow along on the <a href="codex.html">dedicated page</a>.
+            </p>
+        </fieldset>
 
-            <article>
-                <h1>Contact Inforamation</h1>
-                <div class="flex-column">
-                    <a href="https://www.linkedin.com/in/adam-jackson-6a9156215/">LinkedIn</a>
-                    <a href="mailto:contact@adamjackson.dev">E-Mail</a> 
-                </div>
-            </article>
-        </article>
+        <fieldset>
+            <legend>Contact Information</legend>
+            <div class="flex-column">
+                <a href="https://www.linkedin.com/in/adam-jackson-6a9156215/">LinkedIn</a>
+                <a href="mailto:contact@adamjackson.dev">E-Mail</a> 
+            </div>
+        </fieldset>
     </main>
     
-    <footer>
-        <a onclick="setColor()" href="">Switch Theme</a>
-    </footer>
-
-    <script src="projects.js"></script>
+    <script src="shared.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>

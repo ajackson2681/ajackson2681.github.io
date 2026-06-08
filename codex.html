@@ -229,16 +229,22 @@
         </fieldset>
         
         <fieldset>
-            <legend>Future Plans</legend>
-            <h2>Rev0.1/Rev1</h2>
-            <p>
-                I still haven't decided if the next PCB will be rev0.1 or rev1. Ultimately, it doesn't really matter, because the key takeaway is that it's the <i>next</i> revision, and the name is just semantics.
-            </p>
-            <p>
-                I do have the current design of this board pushed to my GitHub repo, and it's currently labeled "rev0.1," but I might just end up treating it as "rev1" since it's adding enough new stuff that my original idea for "rev1" would have been pointless.
-            </p>
+            <legend>Rev1</legend>
 
-            <hr>
+            <h2>Circuit Design</h2>
+            <a href="images/codex/rev1_pcb.png" target="_blank" rel="noopener noreferrer">
+                <img class="half-width" id="rev1" src="images/codex/rev1_pcb.png" alt="rev1 PCB">
+            </a>
+            <p>
+                Originally, I wasn't sure whether to consider this Rev0.1 or Rev1. I ended up settling on Rev1 primarily because there were enough changes that it felt like a truly new revision, and a Rev0.1 felt like it should more have been just fixing mistakes on the original board. This also shows a much clearer progression in the design (at least in my opinion). Ultimately it doesn't matter that much, since either way it's a different board than the original prototype.
+            </p>
+            <p>
+                I have designed and sent in the Rev1 PCB for fabrication. The primary changes in this revision are fixing the mistakes on the Rev0 PCB, such as flipping the SD card footprint, and routing the LCD enable to an actual GPIO pin. Some new additions include a transistor for PWM control of the power to the LCD backlight, breaking out the contrast pin on the LCD so that it can be adjusted with a potentiometer, and wiring up the "card detect" pin from the SD card so that the firmware can more robustly detect when an SD card is inserted or removed (I "backported" this as a bodge wire on the Rev0 PCB). 
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Future Plans</legend>
 
             <h2>Rev2</h2>
             <p>

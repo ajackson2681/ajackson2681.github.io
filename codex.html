@@ -239,7 +239,23 @@
                 Originally, I wasn't sure whether to consider this Rev0.1 or Rev1. I ended up settling on Rev1 primarily because there were enough changes that it felt like a truly new revision, and a Rev0.1 felt like it should more have been just fixing mistakes on the original board. This also shows a much clearer progression in the design (at least in my opinion). Ultimately it doesn't matter that much, since either way it's a different board than the original prototype.
             </p>
             <p>
-                I have designed and sent in the Rev1 PCB for fabrication. The primary changes in this revision are fixing the mistakes on the Rev0 PCB, such as flipping the SD card footprint, and routing the LCD enable to an actual GPIO pin. Some new additions include a transistor for PWM control of the power to the LCD backlight, breaking out the contrast pin on the LCD so that it can be adjusted with a potentiometer, and wiring up the "card detect" pin from the SD card so that the firmware can more robustly detect when an SD card is inserted or removed (I "backported" this as a bodge wire on the Rev0 PCB). 
+                I have designed and sent in the Rev1 PCB for fabrication. The primary changes in this revision are fixing the mistakes on the Rev0 PCB, such as flipping the SD card footprint, and routing the LCD enable to an actual GPIO pin. Some new additions include a transistor for PWM control of the power to the LCD backlight, breaking out the contrast pin on the LCD so that it can be adjusted with a potentiometer, and wiring up the "card detect" pin from the SD card so that the firmware can more robustly detect when an SD card is inserted or removed (I "backported" this as a bodge wire on the Rev0 PCB).
+            </p>
+            <p>
+                One thing I realized that I forgot to include (pretty much right after I sent the board off for fabrication), was to include breakout pins for the indicator LEDs that will sit on the bezel of the final design. Ultimately, this is pretty small fish since they'll just be a gpio pin connected to an LED with a resistor, but it would have been nice to be able to test them to be <i>absolutely</i> sure. I can always solder jumpers from the pads on the bottom of the board if I want to do this. Otherwise, I can just wait until Rev2.
+            </p>
+            <a href="images/codex/cd_bodge.jpg" target="_blank" rel="noopener noreferrer">
+                <img class="half-width" id="cd_bodge" src="images/codex/cd_bodge.jpg" alt="bodged card detect pin on rev0 PCB">
+            </a>
+
+            <h2>Firmware</h2>
+            <p>
+                <i>Technically,</i> I haven't started the firmware for the Rev1 board yet, but since the hardware is mostly the same, and I hacked the Card Detect into Rev0, I was at least able to develop and test that functionality on the Rev0 PCB. However, I discovered that the shield on the SD module I had was not grounded, so when the CD mechanism made contact with the shield, the CD pin wouldn't go low. I just soldered a wire from the GND pin to the shield, but it was a really annoying thing to find out. So if you're using a Saiko ST-SD module, make sure the check if the shield is grounded if you want to be able to use the card detect.
+            </p>
+
+            <h2>Mechanical Design</h2>
+            <p>
+                I have more or less decided that I want to shrink the footprint of the current enclosure down for the final design. I believe I'll give that an attempt with this Rev1 board, since it's <i>supposed</i> to be larger than the Rev2 or Rev3 boards, so if this one fits, then they should too. I have not yet started on this design, and probably won't until I have the Rev1 PCB in-hand.
             </p>
         </fieldset>
 
@@ -255,7 +271,7 @@
 
             <h2>Rev3</h2>
             <p>
-                The Rev3 PCB will be the actual final design, in that it will have the final packages for all of the components, and will likely be designed to be assembled by a manufacturer (aside from the Pico itself). Both the Rev2 and Rev3 PCBs will have the same functionality, but the Rev2 will be more for hobbyists who want to build their own, and the Rev3 will be more for people who just want to buy a finished product.
+                The Rev3 PCB will be the actual final design (or at least that's the plan, we'll see how that pans out), in that it will have the final packages for all of the components, and will likely be designed to be assembled by a manufacturer (aside from the Pico itself). Both the Rev2 and Rev3 PCBs will have the same functionality, but the Rev2 will be more for hobbyists who want to build their own, and the Rev3 will be more for people who just want to buy a finished product.
             </p>
         </fieldset>
         

@@ -255,8 +255,50 @@
 
             <h2>Mechanical Design</h2>
             <p>
-                I have more or less decided that I want to shrink the footprint of the current enclosure down for the final design. I believe I'll give that an attempt with this Rev1 board, since it's <i>supposed</i> to be larger than the Rev2 or Rev3 boards, so if this one fits, then they should too. I have not yet started on this design, and probably won't until I have the Rev1 PCB in-hand.
+                I have figured out a way to shrink the footprint of the overall enclosure. In the original design, I mounted the display to the bezel, and the seperately mounted the bezel to the enclosure. This made it so the bezel was larger than it needed to be. With this second pass, I made it so that the the same screws hold the display in place, but also attach the bezel to the enclosure. This let me shrink the bezel down to just a little bit larger than the LCD's PCB, which is about as small as I can make it.
             </p>
+            <p>
+                I also shrunk the the chamfers on the corners of the enclosure down from 5mm to 3.5mm. I think that this just looks a little better, and also gives me a little more room back on the inside. As you can see in the images below, the difference is subtle, but it definitely takes up less space, and just seems more approriately sized for the display.
+            </p>
+            <p>
+                I do want to note separately that the new enclosure is only green because that's the filament I had on-hand.
+            </p>
+            
+            <div class="flex-row">
+                <div class="flex-column half-width">
+                    <h4>New Enclosure</h4>
+                    <a href="images/codex/second_enclosure.jpg" target="_blank" rel="noopener noreferrer">
+                        <img id="second_enclosure" src="images/codex/second_enclosure.jpg" alt="bodged card detect pin on rev0 PCB">
+                    </a>
+                </div>
+                
+                <div class="flex-column half-width">
+                    <h4>Side-By-Side with Old Enclosure</h4>
+                    <a href="images/codex/side_by_side.jpg" target="_blank" rel="noopener noreferrer">
+                        <img id="side_by_side" src="images/codex/side_by_side.jpg" alt="side by side comparison of old and new enclosures">
+                    </a>
+                </div>
+            </div>
+
+            <p>
+                Here's the technical drawings for the old and new enclosures. As you can see, the new one's dimensions aren't that dramatically smaller, but overall I think it looks better. From what I've measured of the Rev1 PCB, this enclosure should still fit it just fine. Once I get to the Rev2 PCB, I may have to make adjustments again to accomodate the battery charge/management module since that's going to live as a separate board for that revision. The final Rev3 will include the battery management components on the main board.
+            </p>
+
+            <div class="flex-row">
+                <div class="flex-column half-width">
+                    <h4>Old Design</h4>
+                    <a href="images/codex/codex-original.svg" target="_blank" rel="noopener noreferrer">
+                        <img class="svg-container" id="codex-original-svg" src="images/codex/codex-original.svg" alt="codex original sketch">
+                    </a>
+                </div>
+
+                <div class="flex-column half-width">
+                    <h4>New Design</h4> 
+                    <a href="images/codex/codex-new.svg" target="_blank" rel="noopener noreferrer">
+                        <img class="svg-container" id="codex-new-svg" src="images/codex/codex-new.svg" alt="codex new sketch">
+                    </a>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -264,7 +306,7 @@
 
             <h2>Rev2</h2>
             <p>
-                The Rev2 PCB will be the "final" design, in the sense that it will include all of the components for power management and battery charging and it will attempt to be in the final form factor. However, the components used on this are likely to still be through-hole for ease of assembly.
+                The Rev2 PCB will be the "final" design, in the sense that it will include all of the components for power management and battery charging and it will attempt to be in the final form factor. However, the components used on this are likely to still be through-hole for ease of assembly, and the battery management components will likely be on a separate board/module for ease of testing. As of now, the module I've selected is the Adafruit PowerBoost 1000. This is a pretty popular and common module, and has open source schematics that I can use to port the circuit onto the main PCB for the Rev3. I do plan on leaving the 5v regulated circuit on this pcb (with the option to switch to it using a SPDT switch) just in case the PowerBoost doesn't work out for some reason.
             </p>
             
             <hr>

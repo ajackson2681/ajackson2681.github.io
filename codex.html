@@ -254,10 +254,19 @@
                 <img class="half-width" id="cd_bodge" src="images/codex/cd_bodge.jpg" alt="bodged card detect pin on rev0 PCB">
             </a>
 
+            <hr>
+
             <h2>Firmware</h2>
             <p>
-                <i>Technically,</i> I haven't started the firmware for the Rev1 board yet, but since the hardware is mostly the same, and I hacked the Card Detect into Rev0, I was at least able to develop and test that functionality on the Rev0 PCB. However, I discovered that the shield on the SD module I had was not grounded, so when the CD mechanism made contact with the shield, the CD pin wouldn't go low. I just soldered a wire from the GND pin to the shield, but it was a really annoying thing to find out. So if you're using a Saiko ST-SD module, make sure the check if the shield is grounded if you want to be able to use the card detect.
+                <i>Technically,</i> I haven't started the firmware for the Rev1 board yet, but since the hardware is mostly the same, and I hacked the Card Detect into Rev0, I was at least able to develop and test that functionality on the Rev0 PCB. However, I discovered that the shield on the SD module I had was not grounded, so when the CD mechanism made contact with the shield, the CD pin wouldn't go low. I just soldered a wire from the GND pin to the shield, but it was a really annoying thing to find out. So if you're using a Saiko ST-SD module, make sure to check if the shield is grounded if you want to be able to use the card detect.
             </p>
+
+            <h2>Updates</h2>
+            <p><b>17 June 2026</b></p>
+            <p>
+                Now that I'm a little further along with this project, I decided to forgo the LiquidCrystal440 library and just write my own code to interface with the LCD. I am doing this so I can get more familiar with the inner workings of the LCD, but also so I can tailor the code more to this project's specific use case and not include any extra fluff that's not needed.
+            </p>
+            <hr>
 
             <h2>Mechanical Design</h2>
             <p>

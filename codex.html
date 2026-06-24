@@ -69,7 +69,7 @@
 
             <h4>STM32F4</h4>
             <p>
-                After ruling out the ATMega328P, I took at look at the STM32F4 series of microcontrollers. The advantages here were:
+                After ruling out the ATMega328P, I took a look at the STM32F4 series of microcontrollers. The advantages here were:
 
                 <ul>
                     <li>I had a nucleo board sitting around</li>
@@ -150,10 +150,10 @@
                 Originally, I had thought it would be easy. Each row in the LCD is 40 characters, so just move left or right 40 characters in the gap buffer, right? Wrong. If there's a newline before the end of the row in the LCD, that row doesn't occupy 40 characters, so just shifting left or right 40 characters would not put you in the right spot.
             </p>
             <p>
-                The way I ended up getting around this problem is to maintain a "framebuffer" within the gap buffer that contains the currently viewable content. This frambuffer is a 2D array that matches the dimensions of the LCD. So now when you move up or down, the buffer checks if you landed on an actual character (the line you're currently on is the same length or shorter than the one you navigated to), or a null character (the line you're on is longer than the one you navigated to), then it calculates how many characters you'd need to shift in the gap buffer to get to that point.
+                The way I ended up getting around this problem is to maintain a "framebuffer" within the gap buffer that contains the currently viewable content. This framebuffer is a 2D array that matches the dimensions of the LCD. So now when you move up or down, the buffer checks if you landed on an actual character (the line you're currently on is the same length or shorter than the one you navigated to), or a null character (the line you're on is longer than the one you navigated to), then it calculates how many characters you'd need to shift in the gap buffer to get to that point.
             </p>
             <p>
-                The next tricky part was shifting the display up or down when you reach the boundaries of it. Basically, the gap buffer just keeps track of the starting index of of the framebuffer within the gap buffer. Although this was tricky, it actually ended up being less complicated than the movement within the frame buffer. When you move past a boundary you basically just scan forward or backward in the gap buffer until you hit 40 characters or a newline, whichever comes first. Then you just update the starting index of the framebuffer to add or subtract that amount. There are some extra edge cases like checking if you hit the end or beginning of the buffer, but that's the general idea.
+                The next tricky part was shifting the display up or down when you reach the boundaries of it. Basically, the gap buffer just keeps track of the starting index of the framebuffer within the gap buffer. Although this was tricky, it actually ended up being less complicated than the movement within the frame buffer. When you move past a boundary you basically just scan forward or backward in the gap buffer until you hit 40 characters or a newline, whichever comes first. Then you just update the starting index of the framebuffer to add or subtract that amount. There are some extra edge cases like checking if you hit the end or beginning of the buffer, but that's the general idea.
             </p>
             <p>
                 Finally, all of this was <i>extremely</i> annoying to test on-system. So I ended up designing a virtual test program in JavaFX that simulates the LCD so I could test out my gap buffer implementation without having to flash the firmware and connect everything up to the LCD. This ended up being a huge time saver, and I was able to iterate on the firmware much faster than I would have been able to if I had to flash it every time I wanted to test a change. This particular tool can be found on my <a href="https://github.com/ajackson2681/codex-virtual-lcd">GitHub</a>.
@@ -184,7 +184,7 @@
                 The rev0 PCB was essentially just the breadboard design put to an actual PCB to avoid the mess of jumper wires. I did end up re-routing some of the pins from the LCD to the Pico's GPIOs, but the overall design is pretty much the same as the breadboard prototype. It  utilizes socketed components for the microcontroller and SD card slot, so that I can still re-use those for other things. The PCB also  included screw terminals for power input, so I can attach either a battery or a power supply for testing. I ended up using a 9v battery for most of the testing since they're easy to connect and provide more than enough voltage for the linear regulator to work with.
             </p>
             <p>
-                I did, however, make a mistake when re-routing the pins, and routed one of the enable pins on the LCD directly to ground on the Pico. Thankfully, this was easily fixed by cutting the trance and adding a bodge wire. Always be sure to triple (or even quadruple) check  your schematic before sending them off for fabrication! It also helps to not label your pins in a dumb way like me. I made the symbol myself since I couldn't find one I liked, and decided to follow a diagram online that labeled each GND individually (GND1, GND2, etc.). So when I was wiring up the PCB, I just looked at the number, saw the label began with "G" and assumed it was a GPIO. Definitely going to just label all of them GND for the next schematic.
+                I did, however, make a mistake when re-routing the pins, and routed one of the enable pins on the LCD directly to ground on the Pico. Thankfully, this was easily fixed by cutting the trace and adding a bodge wire. Always be sure to triple (or even quadruple) check  your schematic before sending them off for fabrication! It also helps to not label your pins in a dumb way like me. I made the symbol myself since I couldn't find one I liked, and decided to follow a diagram online that labeled each GND individually (GND1, GND2, etc.). So when I was wiring up the PCB, I just looked at the number, saw the label began with "G" and assumed it was a GPIO. Definitely going to just label all of them GND for the next schematic.
             </p>
             
             <a href="images/codex/rev0_schematic_mistake.png" target="_blank" rel="noopener noreferrer">
@@ -254,15 +254,6 @@
                 <img class="half-width" id="cd_bodge" src="images/codex/cd_bodge.jpg" alt="bodged card detect pin on rev0 PCB">
             </a>
 
-            <h2>Updates</h2>
-            <p><b>20 June 2026</b></p>
-            <p>
-                I received the Rev1 PCB in the mail finally, and populated the board. Luckily, the current firmware was able to run on the board with <i>no</i> modifications! I'll be using this board to verify the PWM backlight and contrast adjustments. I also added the ability to just tie the contrast back to ground with a shunt in case the potentiometer doesn't work.
-            </p>
-            <a href="images/codex/rev1_pcb_populated.jpg" target="_blank" rel="noopener noreferrer">
-                <img class="half-width" id="rev1_populated" src="images/codex/rev1_pcb_populated.jpg" alt="rev1 pcb populated">
-            </a>
-
             <hr>
 
             <h2>Firmware</h2>
@@ -270,19 +261,14 @@
                 <i>Technically,</i> I haven't started the firmware for the Rev1 board yet, but since the hardware is mostly the same, and I hacked the Card Detect into Rev0, I was at least able to develop and test that functionality on the Rev0 PCB. However, I discovered that the shield on the SD module I had was not grounded, so when the CD mechanism made contact with the shield, the CD pin wouldn't go low. I just soldered a wire from the GND pin to the shield, but it was a really annoying thing to find out. So if you're using a Saiko ST-SD module, make sure to check if the shield is grounded if you want to be able to use the card detect.
             </p>
 
-            <h2>Updates</h2>
-            <p><b>17 June 2026</b></p>
-            <p>
-                Now that I'm a little further along with this project, I decided to forgo the LiquidCrystal440 library and just write my own code to interface with the LCD. I am doing this so I can get more familiar with the inner workings of the LCD, but also so I can tailor the code more to this project's specific use case and not include any extra fluff that's not needed.
-            </p>
             <hr>
 
             <h2>Mechanical Design</h2>
             <p>
-                I have figured out a way to shrink the footprint of the overall enclosure. In the original design, I mounted the display to the bezel, and the seperately mounted the bezel to the enclosure. This made it so the bezel was larger than it needed to be. With this second pass, I made it so that the the same screws hold the display in place, but also attach the bezel to the enclosure. This let me shrink the bezel down to just a little bit larger than the LCD's PCB, which is about as small as I can make it.
+                I have figured out a way to shrink the footprint of the overall enclosure. In the original design, I mounted the display to the bezel, and the separately mounted the bezel to the enclosure. This made it so the bezel was larger than it needed to be. With this second pass, I made it so that the the same screws hold the display in place, but also attach the bezel to the enclosure. This let me shrink the bezel down to just a little bit larger than the LCD's PCB, which is about as small as I can make it.
             </p>
             <p>
-                I also shrunk the the chamfers on the corners of the enclosure down from 5mm to 3.5mm. I think that this just looks a little better, and also gives me a little more room back on the inside. As you can see in the images below, the difference is subtle, but it definitely takes up less space, and just seems more approriately sized for the display.
+                I also shrunk the the chamfers on the corners of the enclosure down from 5mm to 3.5mm. I think that this just looks a little better, and also gives me a little more room back on the inside. As you can see in the images below, the difference is subtle, but it definitely takes up less space, and just seems more appropriately sized for the display.
             </p>
             <p>
                 I do want to note separately that the new enclosure is only green because that's the filament I had on-hand.
@@ -305,7 +291,7 @@
             </div>
 
             <p>
-                Here's the technical drawings for the old and new enclosures. As you can see, the new one's dimensions aren't that dramatically smaller, but overall I think it looks better. From what I've measured of the Rev1 PCB, this enclosure should still fit it just fine. Once I get to the Rev2 PCB, I may have to make adjustments again to accomodate the battery charge/management module since that's going to live as a separate board for that revision. The final Rev3 will include the battery management components on the main board.
+                Here's the technical drawings for the old and new enclosures. As you can see, the new one's dimensions aren't that dramatically smaller, but overall I think it looks better. From what I've measured of the Rev1 PCB, this enclosure should still fit it just fine. Once I get to the Rev2 PCB, I may have to make adjustments again to accommodate the battery charge/management module since that's going to live as a separate board for that revision. The final Rev3 will include the battery management components on the main board.
             </p>
 
             <div class="flex-row">
@@ -322,6 +308,74 @@
                         <img class="svg-container" id="codex-new-svg" src="images/codex/codex-new.svg" alt="codex new sketch">
                     </a>
                 </div>
+            </div>
+
+            <hr>
+
+            <div class="updates">
+                <h2>Updates</h2>
+                <h4>23 June 2026</h4>
+                <p>
+                    I was attempting to test out the PWM backlight control, and guess what? I messed up. You see this schematic diagram?:
+                </p>
+                <a href="images/codex/rev1_pwm_messup.png" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="rev1_pwm_messup" src="images/codex/rev1_pwm_messup.png" alt="rev1 pwm messup">
+                </a>
+                <p>
+                    This right here is the way someone who doesn't understand transistors would wire up a PWM circuit (to be very clear, <i>I</i> am the one who doesn't understand how transistors work). In this configuration, the LCD backlight is just always on and at full brightness because I just have the 5v and ground pins wired up directly to the LCD, and the transistor is pretty much ignored. Here is how I <i>should</i> have wired it (The diode symbol is just for reference, I'm assuming that J4 effectively equals D1 in this case):
+                </p>
+                <a href="images/codex/rev1_pwm_correct_with_diode_ref.png" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="rev1_pwm_correct" src="images/codex/rev1_pwm_correct_with_diode_ref.png" alt="rev1 pwm correct with diode reference">
+                </a>
+                <p>
+                    So yeah, I feel dumb. Thankfully, since I added extra pins to tie into the 5v line I just needed to cut a trace and then use a different pin, and now the PWM backlight control works as intended. One of these days, I'll design something without making dumb mistakes like this (I won't say no mistakes, just hopefully no dumb ones).
+                </p>
+
+                <h4>22 June 2026</h4>
+                <p>
+                    I have tested and verified that the slide potentiometers <i>work</i> (at least for the contrast), but the ones that I have are logarithmic, so the contrast adjustment only works for a small portion of the potentiometer's range. I haven't yet tested how they interact with the PWM backlight control, but I suspect that it will be similar. I'll need to order some linear potentiometers to replace these. 
+                </p>
+                <p>
+                    Another "problem" I've found with these is trying to get them to fit in the enclosure nicely. As it currently stands, they <i>do</i> fit, but I would like to have a little more wiggle room with the Codex's PCB, especially since the Rev2 will be using an external module for battery management (I might end up just doing that again for Rev3, we'll see how lazy I am). I'm going to try and see if I can find either smaller slide potentiometers, or possibly even move to dial-style ones.
+                </p>
+                <a href="images/codex/enclosure_fitting.png" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="enclosure_fitting" src="images/codex/enclosure_fitting.png" alt="testing potentiometer fit in enclosure">
+                </a>
+                <p>
+                    I should note that in the above image, this is a WIP design for the Rev2 PCB. It's likely the final form factor, but possibly not the final layout. This is mostly for test fitting within the enclosure.
+                </p>
+
+                <h4>21 June 2026</h4>
+                <p>
+                    I finally actually merged the card detect functionality into the main firmware. This merge also included some changes not directly related to card detect, but <i>were</i> related to the file system, and that's at least tangentially related to card detect. Some notable highlights are:
+                    <ul>
+                        <li>Created a <code>forEachVisibleFile</code> function in FileSystem that takes a callback so that I can keep the display logic in the main loop</li>
+                        <li>Added a "New File" option to the selection menu</li>
+                        <li>Added a default name for new files</li>
+                        <li>Added a few extra keyboard shortcuts</li>
+                    </ul>
+                </p>
+
+                <h4>20 June 2026</h4>
+                <p>
+                    I incorporated my own LCD code into the firmware and was able to verify that it <i>mostly</i> works as intended. There was some weirdness with the third and fourth rows of the LCD, but I think I got that squared away. Additionally, the cursor was doing some weird flickering every time a character was inserted, so I tweaked it to only mess with the cursor settings when we switch chips.
+                </p>
+                <p>
+                    At first glance, it <i>appears</i> like this LCD driver works as well as the LiquidCrystal440 library, at least for this use case. I'm sure I'll find some more bugs that I'll need to work out, but overall this is a much more slimmed down solution.
+                </p>
+
+                <h4>19 June 2026</h4>
+                <p>
+                    I received the Rev1 PCB in the mail finally, and populated the board. Luckily, the current firmware was able to run on the board with <i>no</i> modifications! I'll be using this board to verify the PWM backlight and contrast adjustments. I also added the ability to just tie the contrast back to ground with a shunt in case the potentiometer doesn't work.
+                </p>
+                <a href="images/codex/rev1_pcb_populated.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="rev1_populated" src="images/codex/rev1_pcb_populated.jpg" alt="rev1 pcb populated">
+                </a>
+
+                <h4>17 June 2026</h4>
+                <p>
+                    Now that I'm a little further along with this project, I decided to forgo the LiquidCrystal440 library and just write my own code to interface with the LCD. I am doing this so I can get more familiar with the inner workings of the LCD, but also so I can tailor the code more to this project's specific use case and not include any extra fluff that's not needed.
+                </p>
             </div>
         </fieldset>
 

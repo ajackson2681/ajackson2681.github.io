@@ -143,6 +143,10 @@ footer {
     width: 99%;
 }
 
+.updates > h4 {
+    text-decoration: underline;
+}
+
 @media (orientation: portrait) {
     main > article, main > fieldset, header {
         width: 22.5em;

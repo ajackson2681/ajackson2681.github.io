@@ -325,9 +325,14 @@
                 <p>
                     As you can see, the backlight works now, and the contrast in this image is being controlled with the PWM. Although these values <i>can</i> be adjusted, they are not currently adjustable, as I don't have an extra ADC pin broken out for the contrast, and I made a mistake when wiring the brightness potentiometer (I made the incorrect assumption that VCC should go to 5v. It should only go to 3.3v since the pico's GPIO pins only have a logic level of 3.3v).
                 </p>
+                
                 <a href="images/codex/backlight_and_contrast.jpg" target="_blank" rel="noopener noreferrer">
                     <img class="half-width" id="backlight_and_contrast" src="images/codex/backlight_and_contrast.jpg" alt="backlight and contrast">
                 </a>
+
+                <p>
+                    I am likely going to spin a "Rev1.1" board that fixes the above mentioned problems and lets me test the potentiometer adjustments a bit better. Especially since unpopulated boards are like $5 and it will only take like an hour to adjust the schematic.
+                </p>
 
                 <h4>23 June 2026</h4>
                 <p>

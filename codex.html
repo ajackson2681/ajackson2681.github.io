@@ -314,6 +314,21 @@
 
             <div class="updates">
                 <h2>Updates</h2>
+                <h4>2 July 2026</h4>
+                <p>
+                    I have fully validated the Rev1 PCB. Everything that I had hoped to get out of it seems to work now, with only small modifications (noted in previous updates). Additionally, I tested and verified that controlling the contrast using a potentiometer <i>does</i> work, but the amount of usable range is abysmal. Like 1/4 of the travel range of the pot. So I decided to pivot, and use PWM to control the contrast as well. Unfortunately, this board doesn't have a pin dedicated to be able to do that, so I had to solder an extra jumper in order to test this. It works, though.
+                </p>
+                <a href="images/codex/extra_pwm.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="backlight_and_contrast" src="images/codex/extra_pwm.jpg" alt="backlight and contrast">
+                </a>
+
+                <p>
+                    As you can see, the backlight works now, and the contrast in this image is being controlled with the PWM. Although these values <i>can</i> be adjusted, they are not currently adjustable, as I don't have an extra ADC pin broken out for the contrast, and I made a mistake when wiring the brightness potentiometer (I made the incorrect assumption that VCC should go to 5v. It should only go to 3.3v since the pico's GPIO pins only have a logic level of 3.3v).
+                </p>
+                <a href="images/codex/backlight_and_contrast.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="half-width" id="backlight_and_contrast" src="images/codex/backlight_and_contrast.jpg" alt="backlight and contrast">
+                </a>
+
                 <h4>23 June 2026</h4>
                 <p>
                     I was attempting to test out the PWM backlight control, and guess what? I messed up. You see this schematic diagram?:

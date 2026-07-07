@@ -314,6 +314,21 @@
 
             <div class="updates">
                 <h2>Updates</h2>
+                <h4>3 July 2026</h4>
+                <p>
+                    I did indeed spin a Rev1.1 board. It's basically the same as the Rev1 board but with the following fixes/tweaks:
+                </p>
+
+                <ul>
+                    <li>Added contrast potentiometer pin</li>
+                    <li>Fixed PWM routing to backlight transistor</li>
+                    <li>Have potentiometers correctly go to 3.3v</li>
+                </ul>
+
+                <p>
+                    And that's pretty much it. I did add a 5v plane to the front layer, but that was just to simplify a little bit of routing. Since the board is basically identical to the Rev1 (other than the potentiometer pin assignments), I have pretty high confidence this should work as intended. I have ordered the boards, and they should arrive in a week or so. Hopefully they'll allow me to more adequately test the potentiometer adjustments for both the contrast and backlight.
+                </p>
+
                 <h4>2 July 2026</h4>
                 <p>
                     I have fully validated the Rev1 PCB. Everything that I had hoped to get out of it seems to work now, with only small modifications (noted in previous updates). Additionally, I tested and verified that controlling the contrast using a potentiometer <i>does</i> work, but the amount of usable range is abysmal. Like 1/4 of the travel range of the pot. So I decided to pivot, and use PWM to control the contrast as well. Unfortunately, this board doesn't have a pin dedicated to be able to do that, so I had to solder an extra jumper in order to test this. It works, though.
